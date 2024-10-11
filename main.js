@@ -74,13 +74,13 @@ form.addEventListener('submit',function(e){
     const pet = document.getElementById('pet');
 
     const firstname1Value = firstname1.value;
-    const firstname2Value = firstname2.value;
+    let firstname2Value = firstname2.value;
     const lastnameValue = lastname.value;
     const marriedValue = married.checked;
     const petValue = pet.value;
 
-    if(pers.firstname2 === undefined){
-        tbody_td_firstname.colSpan = 2
+    if(firstname2Value === ""){
+        firstname2Value=undefined;
     }
 
     const newperson ={
