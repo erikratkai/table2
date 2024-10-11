@@ -83,20 +83,57 @@ form.addEventListener('submit',function(e){
         firstname2Value=undefined;
     }
 
-    const newperson ={
-        firstname1: firstname1Value,
-        firstname2: firstname2Value,
-        lastname: lastnameValue,
-        married: marriedValue,
-        pet: petValue
+    
+
+    if(validatefields(lastname, firstname1, pet)){
+           const newperson ={
+            firstname1: firstname1Value,
+            firstname2: firstname2Value,
+            lastname: lastnameValue,
+            married: marriedValue,
+            pet: petValue
+        } 
+
+        array.push(newperson);
+        console.log(array);
+
+        rendertable();
     }
 
-    array.push(newperson);
-    console.log(array);
-
-    rendertable();
+    
 })
 rendertable();
+
+
+
+function validatefields(firstHtml, lastHtml, petHtml){
+    let result = true
+    if(firstHtml.value === ""){
+        const szulo = firstHtml.parentElement
+        const errorka = szulo.querySelector(".error")
+        errorka.innerHTML = "kötelező"
+
+        result = false
+    }
+
+    if(lastHtml.value === ""){
+        const szulo = lastHtml.parentElement
+        const errorka = szulo.querySelector(".error")
+        errorka.innerHTML = "kötelező"
+
+        result = false
+    }
+
+    if(petHtml.value === ""){
+        const szulo = petHtml.parentElement
+        const errorka = szulo.querySelector(".error")
+        errorka.innerHTML = "kötelező"
+
+        result = false
+    }
+}
+
+
 
 function rendertable(){
     tbody.innerHTML="";
