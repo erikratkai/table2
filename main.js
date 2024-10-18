@@ -34,35 +34,21 @@ document.body.appendChild(table);
 const thead = document.createElement('thead');
 table.appendChild(thead);
 
-const tr = document.createElement('tr');
-thead.appendChild(tr);
+const trhead = document.createElement('tr');
+thead.appendChild(trhead);
 
 
 
-const th_lastname = document.createElement('th');
-tr.appendChild(th_lastname);
-th_lastname.innerHTML = 'Vezetéknév';
 
-const th_firstname1 = document.createElement('th');
-tr.appendChild(th_firstname1);
-th_firstname1.innerHTML = 'Keresztnév 1';
-
-const th_firstname2 = document.createElement('th');
-tr.appendChild(th_firstname2);
-th_firstname2.innerHTML = 'Keresztnév 2';
-
-const th_pet = document.createElement('th');
-tr.appendChild(th_pet);
-th_pet.innerHTML = 'Háziállat';
-
-const th_married = document.createElement('th');
-tr.appendChild(th_married);
-th_married.innerHTML = 'Házastárs';
 
 const tbody = document.createElement('tbody');
 table.appendChild(tbody);
 
-
+createTableCell("th", "Vezeteknev", trhead);
+createTableCell("th", "Keresztnev1", trhead);
+createTableCell("th", "Keresztnev2", trhead);
+createTableCell("th", "Házas", trhead);
+createTableCell("th", "Állat", trhead);
 
 const form = document.getElementById('form');
 form.addEventListener('submit',function(e){
@@ -193,4 +179,17 @@ function rendertable(){
         }
      
     }
+}
+
+/**
+ * 
+ * @param {'td|th'} tagName 
+ * @param {string} inner 
+ * @param {HTMLTableRowElement} parentElement 
+ */
+
+function createTableCell(tagName, inner, parentElement){
+    const td = document.createElement(tagName);
+    tagName.innerHTML = inner;
+    parentElement.appendChild(td);
 }
